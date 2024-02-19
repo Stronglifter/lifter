@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Lifter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 20px;
+    }
+    
+    h1 {
+      color: #333;
+    }
+    
+    #godipic {
+      max-width: 100%;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease-in-out;
+    }
+    
+    #godipic:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>THE Lifter</h1>
+    <img src="C:\Users\LENOVO\Pictures\sp1\godi.jpg.jpeg" alt="Godi Uthana" id="godipic"><br>
+    <img src="C:\Users\LENOVO\Pictures\sp1\Andrea_Shruthi_Hassan_Vishal_Poojai_Stills_001.jpg" alt="Godi Uthana" id="godipic"><br>
+    <img src="C:\Users\LENOVO\Pictures\Screenshots\Screenshot (417).png" alt="Godi Uthana" id="godipic"><br>
+    <video width="320" height="240" controls>
+      <source src="https://youtu.be/025QFeZfeyM" type="video/mp4">
+      
+    
+    Your browser does not support the video tag.
+    </video>
+    <p>Yeh rahi woh yaadgar pal jab maine tumhe godi mein uthaya tha. Khushiyon ka safar humesha yuhi chalta rahe!</p><br>
+    <p>Click on the image to lift her!</p><br>
+    <p>Score: <span id="score">0</span></p>
+    <p>Time Left: <span id="timer">30</span> seconds</p>
+  </div>
+
+  <script>
+    // Get the image element
+    const godiPic = document.getElementById('godipic');
+    // Get the score display element
+    const scoreDisplay = document.getElementById('score');
+    // Get the timer display element
+    const timerDisplay = document.getElementById('timer');
+    // Initialize score and time limit
+    let score = 0;
+    let timeLeft = 30;
+
+    // Function to increase score and update display
+    function increaseScore() {
+      score++;
+      scoreDisplay.textContent = score;
+    }
+
+    // Function to update timer display
+    function updateTimer() {
+      timerDisplay.textContent = timeLeft + ' seconds';
+      if (timeLeft === 0) {
+        // Game over
+        godiPic.removeEventListener('click', increaseScore);
+        godiPic.style.cursor = 'not-allowed';
+        alert('Game Over! Your final score is ' + score);
+      } else {
+        timeLeft--;
+        setTimeout(updateTimer, 1000);
+      }
+    }
+
+    // Add event listener to the image for click event
+    godiPic.addEventListener('click', increaseScore);
+    // Start the timer
+    updateTimer();
+  </script>
+</body>
+</html>
+ 
